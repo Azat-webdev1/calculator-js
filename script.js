@@ -5,4 +5,8 @@ const deposit = true;
 const mission = 500000;
 const period = 12;
 
-console.log('');
+console.log(typeof money);
+
+console.log(typeof income);
+
+console.log(typeof deposit);
