@@ -1,6 +1,6 @@
-const money = 50000;
+const money = 60000;
 const income = "фриланс";
-const addExpenses = "Коммуналка,Еда,Интернет";
+const addExpenses = "Коммуналка, Еда, Интернет";
 const deposit = true;
 const mission = 500000;
 const period = 12;
@@ -18,7 +18,7 @@ console.log(`
   Цель заработать ${mission} рублей
 `);
 
-console.log(addExpenses.toLocaleLowerCase().split(', '));
+console.log(addExpenses.toLowerCase().split(', '));
 
 const budgetDay = money / 30;
 
