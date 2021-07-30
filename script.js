@@ -1,10 +1,8 @@
-const money = 5;
-const income = 0;
-const addExpenses = 1;
-const deposit = 2;
-const mission = 3;
-const period = 4;
+const money = 50000;
+const income = "фриланс";
+const addExpenses = "коммуналка, еда, интернет";
+const deposit = true;
+const mission = 500000;
+const period = 12;
 
-alert('Hello');
-
-console.log('GitHub');
+console.log('');
