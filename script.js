@@ -1,6 +1,6 @@
 const money = 50000;
 const income = "фриланс";
-const addExpenses = "коммуналка, еда, интернет";
+const addExpenses = "Коммуналка,Еда,Интернет";
 const deposit = true;
 const mission = 500000;
 const period = 12;
@@ -17,3 +17,6 @@ console.log(`
   Период равен ${period} месяцев и
   Цель заработать ${mission} рублей
 `);
+
+console.log(addExpenses.toLocaleLowerCase().split(', '));
+
