@@ -31,6 +31,15 @@ let arrLang = {
 
 console.log(arrLang[lang]);
 
+//вариант 2
+let arrLang1 = [
+  [ 'Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье'],
+  ['Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'] 
+];
+
+console.log((lang === 'ru') ? arrLang1[0] 
+  : (lang === 'en') ? arrLang1[1] 
+  : 'ошибка');
 
 let namePerson = '';
   console.log((namePerson === 'Артем') ? 'директор'
