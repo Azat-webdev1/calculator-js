@@ -1,17 +1,21 @@
-const money = 60000;
+'use strict';
+
+// урок №3
+let money = +prompt('Ваш месячный доход?');
+console.log('type money: ', typeof money);
+
 const income = "фриланс";
-const addExpenses = "Коммуналка, Еда, Интернет";
-const deposit = true;
-const mission = 500000;
-const period = 12;
+console.log('type income: ', typeof income);
 
-console.log(typeof money);
-
-console.log(typeof income);
-
-console.log(typeof deposit);
-
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка, Еда, Интернет');
 console.log(addExpenses.length);
+
+let deposit = confirm('Есть ли у вас депозит в банке?');
+console.log('type deposit: ', typeof deposit);
+
+let mission = 500000;
+
+let period = 12;
 
 console.log(`
   Период равен ${period} месяцев и
@@ -20,6 +24,6 @@ console.log(`
 
 console.log(addExpenses.toLowerCase().split(', '));
 
-const budgetDay = money / 30;
 
-console.log(budgetDay);
+
+
