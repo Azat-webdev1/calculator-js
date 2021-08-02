@@ -29,6 +29,8 @@ let amount1 = +prompt('Во сколько это обойдется?', 12000);
 let expenses2 = prompt('Введите обязательную статью расходов?', 'транспорт' );
 let amount2 = +prompt('Во сколько это обойдется?', 2500);
 
+let budgetMonth = +money - (amount1 + amount2);
+console.log('Бюджет на месяц: ', budgetMonth);
 
 
 
