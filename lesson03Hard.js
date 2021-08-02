@@ -1,4 +1,4 @@
-let lang = 'en';
+let lang = 'ru';
 
 //решение через if
 if (lang === 'ru') {
@@ -23,15 +23,13 @@ switch (lang) {
     break;
 } 
 
-
-/*
 //решение через многомерный массив
-let arrLang = [
-  {ru: 'ru' ['Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье'] },
-  {en: 'en' ['Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'] }
-];
+let arrLang = {
+  ru: [ 'Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье'],
+  en: [ 'Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'] 
+};
+
 console.log(arrLang[lang]);
-*/
 
 
 let namePerson = '';
