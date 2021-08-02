@@ -32,3 +32,10 @@ let arrLang = [
 ];
 console.log(arrLang[lang]);
 */
+
+
+let namePerson = '';
+  console.log((namePerson === 'Артем') ? 'директор'
+    : (namePerson === 'Максим') ? 'преподаватель'
+    : 'студент'
+);
