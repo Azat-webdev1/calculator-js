@@ -34,4 +34,7 @@ console.log('Бюджет на месяц: ', budgetMonth);
 
 console.log(`Цель будет достигнута за ${Math.ceil(mission / budgetMonth)} месяцев(-а)`);
 
+let budgetDay =  Math.floor(money / 30);
+
+console.log('Бюджет на день: ', budgetDay);
 
