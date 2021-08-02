@@ -24,6 +24,11 @@ console.log(`
 
 console.log(addExpenses.toLowerCase().split(', '));
 
+let expenses1 = prompt('Введите обязательную статью расходов?', 'продукты');
+let amount1 = +prompt('Во сколько это обойдется?', 12000);
+let expenses2 = prompt('Введите обязательную статью расходов?', 'транспорт' );
+let amount2 = +prompt('Во сколько это обойдется?', 2500);
+
 
 
 
