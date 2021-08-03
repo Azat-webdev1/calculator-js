@@ -1,13 +1,18 @@
 'use strict';
 
 // урок №3
-let money = +prompt('Ваш месячный доход?');
+let money = +prompt('Ваш месячный доход?', 60000);
+
+if (money < 1) {
+  alert('Введите положительное число и больше нуля');
+}
+
 console.log('type money: ', typeof money);
 
 const income = "фриланс";
 console.log('type income: ', typeof income);
 
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка, Еда, Интернет');
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка,Еда,Интернет');
 console.log(addExpenses.length);
 
 let deposit = confirm('Есть ли у вас депозит в банке?');
@@ -22,18 +27,38 @@ console.log(`
   Цель заработать ${mission} рублей
 `);
 
-console.log(addExpenses.toLowerCase().split(', '));
+console.log(addExpenses.toLowerCase().split(','));
 
 let expenses1 = prompt('Введите обязательную статью расходов?', 'продукты');
 let amount1 = +prompt('Во сколько это обойдется?', 12000);
-let expenses2 = prompt('Введите обязательную статью расходов?', 'транспорт' );
+  
+if (amount1 < 0) {
+  alert('Введите положительное число');
+}
+
+let expenses2 = prompt('Введите обязательную статью расходов?', 'транспорт');
 let amount2 = +prompt('Во сколько это обойдется?', 2500);
+  
+if (amount2 < 0) {
+  alert('Введите положительное число');
+}
 
 //бюджет за месяц
 let budgetMonth = +money - (amount1 + amount2);
-console.log('Бюджет на месяц: ', budgetMonth);
 
-console.log(`Цель будет достигнута за ${Math.ceil(mission / budgetMonth)} месяцев(-а)`);
+if (budgetMonth === 0) {
+  console.log('Ошибка, сделайте перерасчет');
+} else {
+  console.log('Бюджет на месяц: ', budgetMonth);
+}
+
+let targetMonth = isFinite(Math.ceil(mission / budgetMonth));
+
+if (targetMonth === false) {
+  console.log('Ошибка, цель не достигнута');
+} else {
+  console.log(`Цель будет достигнута за ${targetMonth} месяцев(-а)`);
+}
 
 //бюджет за день
 let budgetDay =  Math.floor(money / 30);
