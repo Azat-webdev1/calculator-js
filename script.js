@@ -89,6 +89,10 @@ if (getTargetMonth === false) {
   console.log(`Цель будет достигнута за ${getTargetMonth(mission, accumulatedMonth)} месяцев(-а)`);
 }
 
+//бюджет за день
+let budgetDay =  Math.floor(accumulatedMonth / 30);
+
+console.log('Бюджет на день: ', budgetDay);
 
 
 
