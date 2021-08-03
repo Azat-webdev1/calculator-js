@@ -86,5 +86,6 @@ if (budgetDay > 1200) {
   console.log('К сожалению у вас уровень дохода ниже среднего');
 } else if (budgetDay < 0) {
   console.log('Что то пошло не так');
+} else if (isNaN(budgetDay)) {
+  console.log('Где-то закралась ошибка...');
 }
-
