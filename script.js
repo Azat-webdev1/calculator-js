@@ -78,7 +78,16 @@ if (accumulatedMonth === 0) {
   console.log('Бюджет на месяц: ', accumulatedMonth);
 }
 
+//результат месячного накопления
+const getTargetMonth = function() {
+  return Math.ceil(isFinite(mission / accumulatedMonth));
+}
 
+if (getTargetMonth === false) {
+  console.log('Ошибка, цель не достигнута');
+} else {
+  console.log(`Цель будет достигнута за ${getTargetMonth(mission, accumulatedMonth)} месяцев(-а)`);
+}
 
 
 
