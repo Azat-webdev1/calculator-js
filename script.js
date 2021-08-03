@@ -94,7 +94,27 @@ let budgetDay =  Math.floor(accumulatedMonth / 30);
 
 console.log('Бюджет на день: ', budgetDay);
 
+//фукция уровень дохода
+const getStatusIncome = function (budget) {
+  if (budget > 1200) {
+  console.log('У вас высокий уровень дохода');
+} else if (budget === 1200) {
+  console.log('У вас почти получилось попасть в группу с высоким уровнем дохода');
+} else if (budget > 600 && budgetDay < 1200) {
+  console.log('У вас средний уровень дохода');
+} else if (budget === 600) {
+  console.log('У вас почти средний уровень дохода, но немного не хватает...');
+} else if (budget < 600 && budget > 0) {
+  console.log('К сожалению у вас уровень дохода ниже среднего');
+} else if (budget < 0) {
+  console.log('Что то пошло не так');
+} else if (isNaN(budget)) {
+  console.log('Где-то закралась ошибка...');
+}
+return budget;
+};
 
+console.log('getStatusIncome(): ', getStatusIncome(budgetDay));
 
 
 
