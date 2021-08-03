@@ -70,6 +70,13 @@ const getAccumulatedMonth = function (moneyMonth, expensesMonth) {
   return moneyMonth - expensesMonth;
 }
 
+const accumulatedMonth = getAccumulatedMonth(money, getExpensesMonth());
+
+if (accumulatedMonth === 0) {
+  console.log('Ошибка, сделайте перерасчет');
+} else {
+  console.log('Бюджет на месяц: ', accumulatedMonth);
+}
 
 
 
