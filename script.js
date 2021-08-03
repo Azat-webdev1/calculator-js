@@ -3,9 +3,21 @@
 // урок №3
 let money = +prompt('Ваш месячный доход?', 60000);
 
-if (money < 1) {
-  alert('Введите положительное число и больше нуля');
+function numberHandler(text) {
+  let value = +prompt(text);
+
+  if (null || value === 0) {
+    confirm('Введите значение');
+    return numberHandler();
+  } else if (isNaN(parseFloat(value))) {
+    confirm('Пожалуйста введите только цифры');
+    return numberHandler();
+  } else {
+    return value;
+  }
 }
+
+numberHandler(money);
 
 console.log('type money: ', typeof money);
 
@@ -32,16 +44,12 @@ console.log(addExpenses.toLowerCase().split(','));
 let expenses1 = prompt('Введите обязательную статью расходов?', 'продукты');
 let amount1 = +prompt('Во сколько это обойдется?', 12000);
   
-if (amount1 < 0) {
-  alert('Введите положительное число');
-}
+numberHandler(money);
 
 let expenses2 = prompt('Введите обязательную статью расходов?', 'транспорт');
 let amount2 = +prompt('Во сколько это обойдется?', 2500);
   
-if (amount2 < 0) {
-  alert('Введите положительное число');
-}
+numberHandler(money);
 
 //бюджет за месяц
 let budgetMonth = +money - (amount1 + amount2);
@@ -52,7 +60,7 @@ if (budgetMonth === 0) {
   console.log('Бюджет на месяц: ', budgetMonth);
 }
 
-let targetMonth = isFinite(Math.ceil(mission / budgetMonth));
+let targetMonth = Math.ceil(isFinite( mission / budgetMonth));
 
 if (targetMonth === false) {
   console.log('Ошибка, цель не достигнута');
