@@ -64,6 +64,12 @@ const getExpensesMonth = function() {
 
 console.log('Обязательные расходы за месяц: ', getExpensesMonth());
 
+//бюджет за месяц
+const getAccumulatedMonth = function (moneyMonth, expensesMonth) {
+  if (!moneyMonth) { moneyMonth = 0; }
+  return moneyMonth - expensesMonth;
+}
+
 
 
 
