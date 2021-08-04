@@ -11,7 +11,7 @@ function numberHandler(text) {
   if (null || value === 0) {
     confirm('Введите значение');
     return numberHandler();
-  } else if (isNaN(parseFloat(value))) {
+  } else if (isNumber(value)) {
     confirm('Пожалуйста введите только цифры');
     return numberHandler();
   } else {
@@ -32,8 +32,7 @@ let start = function () {
   do {
     money = +prompt('Ваш месячный доход?');
     !isNumber(money);
-  }
-  while (!isNumber(money));
+  } while (!isNumber(money));
 
 };
 
@@ -62,12 +61,17 @@ console.log(addExpenses.toLowerCase().split(','));
 const getExpensesMonth = function () {
   let sum = 0;
 
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 4; i++) {
     
     expenses[i] = prompt('Введите обязательную статью расходов?');
     
-    sum += +prompt('Во сколько это обойдется?');
-    
+      sum += (() => {
+        let n = 0;
+        do {
+            n = prompt('Во сколько это обойдется?');
+        } while (!isNumber(n));
+        return +n;
+    })();
   }
   console.log(expenses);
   return sum;
@@ -78,11 +82,16 @@ let expensesAmount = getExpensesMonth();
 console.log('Обязательные расходы за месяц: ', expensesAmount);
 
 //бюджет за месяц
-const getAccumulatedMonth = function () {
-  return money - expensesAmount;
+const getAccumulatedMonth = function (moneyMonth, expensesMonth) {
+  
+  if (!moneyMonth) {
+    moneyMonth = 0;
+  }
+  
+  return money - expensesMonth;
 }
 
-const accumulatedMonth = getAccumulatedMonth(money, getExpensesMonth());
+const accumulatedMonth = getAccumulatedMonth(money, expensesAmount);
 
 if (accumulatedMonth === 0) {
   console.log('Ошибка, сделайте перерасчет');
