@@ -23,7 +23,7 @@ let money;
 let income = "фриланс";
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка, Еда, Интернет');
 let deposit = confirm('Есть ли у вас депозит в банке?');
-let mission = 500000;
+let mission = 5000;
 let period = 12;
 
 let start = function () {
@@ -67,6 +67,7 @@ const getExpensesMonth = function () {
     expenses[i] = prompt('Введите обязательную статью расходов?');
     
     sum += +prompt('Во сколько это обойдется?');
+    !isNumber(sum);
   }
   console.log(expenses);
   return sum;
@@ -95,7 +96,7 @@ const getTargetMonth = function() {
 }
 
 if (getTargetMonth === false) {
-  console.log('Ошибка, цель не достигнута');
+  console.log('Цель не будет достигнута');
 } else {
   console.log(`Цель будет достигнута за ${getTargetMonth(mission, accumulatedMonth)} месяцев(-а)`);
 }
