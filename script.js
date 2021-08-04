@@ -33,7 +33,7 @@ let start = function () {
     money = +prompt('Ваш месячный доход?');
     !isNumber(money);
   } while (!isNumber(money));
-
+  --money;
 };
 
 start();
@@ -104,7 +104,7 @@ const getTargetMonth = function() {
   return Math.ceil(isFinite(mission / accumulatedMonth));
 }
 
-if (getTargetMonth === false) {
+if (getTargetMonth === false && getTargetMonth < 0) {
   console.log('Цель не будет достигнута');
 } else {
   console.log(`Цель будет достигнута за ${getTargetMonth(mission, accumulatedMonth)} месяцев(-а)`);
