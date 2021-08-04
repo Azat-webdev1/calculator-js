@@ -29,10 +29,15 @@ let period = 12;
 let start = function () {
   money = prompt('Ваш месячный доход?');
   
-  while (!isNumber(money)) {
-    money = prompt('Ваш месячный доход?');
+  do {
+    money = +prompt('Ваш месячный доход?');
+    !isNumber(money);
   }
+  while (!isNumber(money));
+
 };
+
+start();
 
 console.log(addExpenses.length);
 
@@ -48,33 +53,32 @@ console.log(`
   Период равен ${period} месяцев и
   Цель заработать ${mission} рублей
 `);
+
 let expenses = [];
 
 console.log(addExpenses.toLowerCase().split(','));
 
-let expenses1 = prompt('Введите обязательную статью расходов?', 'продукты');
-let amount1 = +prompt('Во сколько это обойдется?', 12000);
-
-numberHandler(amount1);
-
-let expenses2 = prompt('Введите обязательную статью расходов?', 'транспорт');
-let amount2 = +prompt('Во сколько это обойдется?', 2500);
-
-numberHandler(amount2);
-
 //сумму всех обязательных расходов за месяц
-const getExpensesMonth = function() {
-  if (!amount1) { amount1 = 0; }
-  if (!amount2) { amount2 = 0; }
-  return (amount1 + amount2);
-}
+const getExpensesMonth = function () {
+  let sum = 0;
 
-console.log('Обязательные расходы за месяц: ', getExpensesMonth());
+  for (let i = 0; i < 2; i++) {
+    
+    expenses[i] = prompt('Введите обязательную статью расходов?');
+    
+    sum += +prompt('Во сколько это обойдется?');
+  }
+  console.log(expenses);
+  return sum;
+};
+
+let expensesAmount = getExpensesMonth();
+
+console.log('Обязательные расходы за месяц: ', expensesAmount);
 
 //бюджет за месяц
-const getAccumulatedMonth = function (moneyMonth, expensesMonth) {
-  if (!moneyMonth) { moneyMonth = 0; }
-  return moneyMonth - expensesMonth;
+const getAccumulatedMonth = function () {
+  return money - expensesAmount;
 }
 
 const accumulatedMonth = getAccumulatedMonth(money, getExpensesMonth());
