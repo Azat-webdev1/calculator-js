@@ -102,7 +102,7 @@ if (getTargetMonth === false) {
 }
 
 //бюджет за день
-let budgetDay =  Math.floor(accumulatedMonth / 30);
+let budgetDay = Math.floor(accumulatedMonth / 30);
 
 console.log('Бюджет на день: ', budgetDay);
 
