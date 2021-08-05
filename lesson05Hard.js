@@ -26,6 +26,7 @@ const dividers = (el) => {
   return arr;
 };
 
+
 for (let i = 1; i <= 100; i++) {
-  console.log(`${i}: Делители этого числа: ${dividers(i).join(', ')}`);
+  console.log(`${i}: Делители этого числа: 1 и ${dividers(i).slice(1, 2)}`);
 }
