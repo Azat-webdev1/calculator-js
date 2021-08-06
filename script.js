@@ -87,8 +87,9 @@ let appData = {
   
   //функция уровень дохода
   getStatusIncome() {
-    appData.budgetDay = Math.floor(appData.budgetDay() / 30);
+    appData.budgetDay = Math.floor(appData.getBudget() / 30);
     let budget = appData.budgetDay;
+    
     if (budget > 1200) {
       console.log('У вас высокий уровень дохода');
     } else if (budget === 1200) {
@@ -110,23 +111,14 @@ let appData = {
 
 appData.asking();
 
-console.log(appData.addExpenses.length);
+appData.getExpensesMonth();
 
-let expensesAmount = appData.getExpensesMonth();
+appData.getBudget();
 
-console.log('Обязательные расходы за месяц: ', expensesAmount);
+appData.getTargetMonth();
 
-let accumulatedMonth = appData.getAccumulatedMonth(money, expensesAmount);
+appData.getStatusIncome();
 
-if (accumulatedMonth === 0) {
-  console.log('Ошибка, сделайте перерасчет');
-} else {
-  console.log('Бюджет на месяц: ', accumulatedMonth);
-}
+console.log('Сумма обязательных расходов ' + appData.expensesMonth);
 
-let targetMonth = appData.getTargetMonth();
-
-
-console.log('Бюджет на день: ', budgetDay);
-
-console.log('Уровень дохода: ', appData.getStatusIncome(budgetDay));
+console.log(appData.getStatusIncome());
