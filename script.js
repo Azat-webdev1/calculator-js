@@ -1,9 +1,11 @@
 'use strict';
 
-// урок №5
+// урок №7
 let isNumber = function (n) {
   return !isNaN(parseFloat(n) && isFinite(n));
 }
+
+let money;
 
 let start = function () {
   money = prompt('Ваш месячный доход?');
@@ -15,26 +17,35 @@ let start = function () {
   --money;
 };
 
-let money;
-let income = "фриланс";
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка, Еда, Интернет');
-let deposit = confirm('Есть ли у вас депозит в банке?');
-let mission = 5000;
-let period = 12;
-
-
 start();
 
-console.log(addExpenses.length);
+let appData = {
+  income: {},
+  addIncome: [],
+  expenses: {},
+  addExpenses: [],
+  deposit: false,
+  mission: 500000,
+  period: 12,
+  asking: function () {
+    let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка, Еда, Интернет');
+        appData.addExpenses = addExpenses.toLowerCase().split(',');
+        appData.deposit = confirm('Есть ли у вас депозит в банке?');
+  },
+  budget: money,
+  budgetDay: 0,
+  budgetMonth: 0,
+  expensesMonth: 0
+};
+  
+console.log(appData.addExpenses.length);
 
 console.log(`
-  Период равен ${period} месяцев и
-  Цель заработать ${mission} рублей
+  Период равен ${appData.period} месяцев и
+  Цель заработать ${appData.mission} рублей
 `);
 
 let expenses = [];
-
-console.log(addExpenses.toLowerCase().split(','));
 
 //сумму всех обязательных расходов за месяц
 const getExpensesMonth = function () {
@@ -67,7 +78,7 @@ const getAccumulatedMonth = function (moneyMonth, expensesMonth) {
     moneyMonth = 0;
   }
   
-  return money - expensesMonth;
+  return moneyMonth - expensesMonth;
 }
 
 const accumulatedMonth = getAccumulatedMonth(money, expensesAmount);
@@ -80,13 +91,13 @@ if (accumulatedMonth === 0) {
 
 //результат месячного накопления
 const getTargetMonth = function() {
-  return Math.ceil(isFinite(mission / accumulatedMonth));
+  return Math.ceil(isFinite(appData.mission / accumulatedMonth));
 }
 
 if (getTargetMonth === false && getTargetMonth < 0) {
   console.log('Цель не будет достигнута');
 } else {
-  console.log(`Цель будет достигнута за ${getTargetMonth(mission, accumulatedMonth)} месяцев(-а)`);
+  console.log(`Цель будет достигнута за ${getTargetMonth(appData.mission, accumulatedMonth)} месяцев(-а)`);
 }
 
 //бюджет за день
