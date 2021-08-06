@@ -1,7 +1,7 @@
 'use strict';
 
 // урок №7
-let isNumber = function (n) {
+let isNumber = (n) => {
   return !isNaN(parseFloat(n) && isFinite(n));
 }
 
@@ -28,10 +28,27 @@ let appData = {
   mission: 500000,
   period: 12,
   
-  asking: function () {
+  asking() {
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
         appData.addExpenses = addExpenses.toLowerCase().split(',');
-        appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    
+    let costs = [];
+    let sum = 0;
+  
+    for (let i = 0; i < 4; i++) {
+      
+      costs[i] = prompt('Введите обязательную статью расходов?');
+      
+        sum += (() => {
+          let num = 0;
+          do {
+              num = prompt('Во сколько это обойдется?');
+          } while (!isNumber(n));
+          return +num;
+      })();
+    }
+      return appData.expenses = +sum;
   },
   
   budget: money,
@@ -40,23 +57,7 @@ let appData = {
   expensesMonth: 0,
   
   getExpensesMonth() {
-    let expenses1 = [];
-    let sum = 0;
   
-    for (let i = 0; i < 2; i++) {
-      
-      expenses1[i] = prompt('Введите обязательную статью расходов?');
-      
-        sum += (() => {
-          let n = 0;
-          do {
-              n = prompt('Во сколько это обойдется?');
-          } while (!isNumber(n));
-          return +n;
-      })();
-    }
-    console.log(expenses1);
-    return sum;
   },
 
   //бюджет за месяц
@@ -74,7 +75,7 @@ let appData = {
     return Math.ceil(isFinite(appData.mission / accumulatedMonth));
   },
   
-  //фукция уровень дохода
+  //функция уровень дохода
   getStatusIncome (budget) {
     if (budget > 1200) {
     console.log('У вас высокий уровень дохода');
@@ -94,14 +95,8 @@ let appData = {
     return budget;
   }
 };
-  
 
-/*
-console.log(`
-  Период равен ${appData.period} месяцев и
-  Цель заработать ${appData.mission} рублей
-`);
-*/
+appData.asking();
 
 console.log(appData.addExpenses.length);
 
