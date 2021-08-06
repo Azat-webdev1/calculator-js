@@ -5,27 +5,6 @@ let isNumber = function (n) {
   return !isNaN(parseFloat(n) && isFinite(n));
 }
 
-function numberHandler(text) {
-  let value = +prompt(text);
-
-  if (null || value === 0) {
-    confirm('Введите значение');
-    return numberHandler();
-  } else if (isNumber(value)) {
-    confirm('Пожалуйста введите только цифры');
-    return numberHandler();
-  } else {
-    return value;
-  }
-}
-
-let money;
-let income = "фриланс";
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка, Еда, Интернет');
-let deposit = confirm('Есть ли у вас депозит в банке?');
-let mission = 5000;
-let period = 12;
-
 let start = function () {
   money = prompt('Ваш месячный доход?');
   
@@ -36,17 +15,17 @@ let start = function () {
   --money;
 };
 
+let money;
+let income = "фриланс";
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Коммуналка, Еда, Интернет');
+let deposit = confirm('Есть ли у вас депозит в банке?');
+let mission = 5000;
+let period = 12;
+
+
 start();
 
 console.log(addExpenses.length);
-
-let showTypeof = function (data) {
-  console.log(data, typeof (data));
-};
-
-showTypeof(money);
-showTypeof(income);
-showTypeof(deposit);
 
 console.log(`
   Период равен ${period} месяцев и
