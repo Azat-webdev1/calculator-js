@@ -149,13 +149,13 @@ let appData = {
 
 appData.asking();
 
-//appData.getExpensesMonth();
+appData.getExpensesMonth();
 
-//appData.getBudget();
+appData.getBudget();
 
-//appData.getTargetMonth();
+appData.getTargetMonth();
 
-//appData.getInfoDeposit();
+appData.getInfoDeposit();
 
 console.log('Расходы за месяц: ', appData.expensesMonth);
 
