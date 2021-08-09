@@ -55,13 +55,15 @@ let appData = {
     let addExpenses = '';
     do {
       addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
-          'интернет, такси, коммуналка');
+          'интеРнет,такси,коммунаЛка');
     } while (!isString(addExpenses, true));
     
-    appData.addExpenses = addExpenses.toLowerCase().split(',');
+    appData.addExpenses = addExpenses.split(',')
+    .map(val => val.charAt(0).toUpperCase() + val.substr(1).toLowerCase())
+    .join(', ');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 1; i++) {
       let str = '';
       do {
         str = prompt('Введите обязательную статью расходов?');
@@ -147,17 +149,19 @@ let appData = {
 
 appData.asking();
 
-appData.getExpensesMonth();
+//appData.getExpensesMonth();
 
-appData.getBudget();
+//appData.getBudget();
 
-appData.getTargetMonth();
+//appData.getTargetMonth();
 
-appData.getInfoDeposit();
+//appData.getInfoDeposit();
 
 console.log('Расходы за месяц: ', appData.expensesMonth);
 
 console.log('Уровень дохода: ', appData.getStatusIncome());
+
+console.log('appData.addExpenses: ', appData.addExpenses);
 
 console.log('Наша программа включает в себя данные: ');
 for (let elem in appData) {
