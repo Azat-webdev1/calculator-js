@@ -3,7 +3,12 @@
 // урок №8
 let isNumber = (n) => {
   return !isNaN(parseFloat(n) && isFinite(n));
-}
+};
+
+let isString = (str, comma = false) => {
+  const pattern = comma ? /^[, а-яА-ЯёЁa-zA-Z]+$/ : /^[ а-яА-ЯёЁa-zA-Z]+$/;
+  return pattern.test(str);
+};
 
 let money,
     start = () => {
@@ -33,18 +38,36 @@ let appData = {
   asking() {
 
     if (confirm('Есть ли у вас дополнительный источник заработка')) {
-      let itemIncome = prompt('Какой у вас дополнительный заработок?', 'фриланс');
-      let cashIncome = prompt('сколько в месяц вы на этом зарфбатываете?', 15000);
-      appData.income[itemIncome] = cashIncome;
-
+      
+      let itemIncome = '';
+      while (!isString(itemIncome)) {
+        itemIncome = prompt('Какой у вас дополнительный заработок?', 'фриланс');
+      }
+      
+      let cashIncome = 0;
+      while (!isNumber(cashIncome)) {
+        cashIncome = prompt('сколько в месяц вы на этом зарфбатываете?', 15000);
+      }
+      
+      appData.income[itemIncome] = +cashIncome;
     }
-
-    let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'интернет, такси, коммуналка');
+    
+    let addExpenses = '';
+    do {
+      addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
+          'интернет, такси, коммуналка');
+    } while (!isString(addExpenses, true));
+    
     appData.addExpenses = addExpenses.toLowerCase().split(',');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     
     for (let i = 0; i < 2; i++) {
-      appData.expenses[prompt('Введите обязательную статью расходов?')] = (() => {
+      let str = '';
+      do {
+        str = prompt('Введите обязательную статью расходов?');
+      } while (!isString(str));
+      
+      appData.expenses[str] = (() => {
         let num = 0;
         do {
           num = prompt('Во сколько это обойдется?');
@@ -105,8 +128,15 @@ let appData = {
 
   getInfoDeposit() {
     if (appData.deposit) {
-      appData.percentDeposit = prompt('Какой годовой процент?', '10');
-      appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
+      let n = 0;
+      do {
+          n = prompt('Какой годовой процент?', '10');
+      } while (!isNumber(n) && n < 0);
+      appData.precentDeposit = +n;
+      do {
+          appData.moneyDeposit = prompt('Какая сумма заложена?', 15000);
+      } while (!isNumber(n) && n < 0);
+      appData.moneyDeposit = +n;
     }
   },
 
