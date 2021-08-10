@@ -41,12 +41,6 @@ const todayDateOne = () => {
   ${currentHour} ${getCorrectHour(currentHour)} ${currentMinutes} минут ${currentSeconds} секунды `;
 };
 
-// Выводим каждую секунду актуальное время
-setInterval(() => {
-  body.prepend(clock);
-  clock.textContent = todayDateOne();
-}, 1000);
-
 
 // Функция добавляет ноль перед числом которое состоит из 1 цифры
 const addZero = (num) => {
@@ -56,12 +50,29 @@ const addZero = (num) => {
       return num;
   }
 };
+
+// Функция возвращает строку вида '04.02.2020 - 21:05:33'
+const todayDateTwo = () => {
+  let currentDate = new Date(),
+      currentDay = currentDate.getDate(), 
+      currentMonth = currentDate.getMonth(), 
+      currentYear = currentDate.getFullYear(), 
+      currentHour = currentDate.getHours(), 
+      currentMinutes = currentDate.getMinutes(),
+      currentSeconds = currentDate.getSeconds(); 
+
+  return `б)${addZero(currentDay)}.${addZero(currentMonth + 1)}.${currentYear} - ${addZero(currentHour)}:${addZero(currentMinutes)}:${addZero(currentSeconds)}`;
+};
+
 // Создаем клон элемента
 let clockTwo = clock.cloneNode(false);
 
-// Выводим каждую секунду актуальное время
 setInterval(() => {
-    body.prepend(clockTwo);
-    clockTwo.textContent = todayDateTwo();
+  body.prepend(clockTwo);
+  clockTwo.textContent = todayDateTwo();
 }, 1000);
 
+setInterval(() => {
+  body.prepend(clock);
+  clock.textContent = todayDateOne();
+}, 1000);
