@@ -11,7 +11,6 @@ let getMonthDay = new Date().toLocaleString('ru', {
 });
 
 
-
 // Вывод
 document.write(``);
 document.write(``);
