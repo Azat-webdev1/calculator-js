@@ -1,14 +1,17 @@
 'use strict';
 
-let data = new Date();
-let year = data.getFullYear();
-let month = data.getMonth();
-let day = data.getDate();
-let hour = data.getHours();
-let minutes = data.getMinutes();
-let seconds = data.getSeconds();
+// Получаем день недели словами
+let getWeekDay = new Date().toLocaleString('ru', {
+  weekday: 'long',
+});
+
+// Получаем месяц словами
+let getMonthDay = new Date().toLocaleString('ru', {
+  month: 'long',
+});
+
 
 
 // Вывод
-document.write(`<strong> Сегодня ${day}-${month}-${year} года, ${hour} час(-а) ${minutes} минут(-ы) ${seconds} секунд(-ы) </strong> `);
-document.write(`<p> <strong> Сегодня ${data.toLocaleString()} </strong> </p> `);
+document.write(``);
+document.write(``);
