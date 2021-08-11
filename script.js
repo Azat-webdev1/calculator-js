@@ -64,7 +64,7 @@ let appData = {
     
     appData.getExpensesMonth();
     appData.getBudget();
-    
+    appData.getAddExpenses();
     appData.showResult();
   },
   
@@ -72,6 +72,7 @@ let appData = {
     budgetMonthValue.value = appData.budgetMonth;
     budgetDayValue.value = appData.budgetDay;
     expensesMonthValue.value = appData.expensesMonth;
+    additionalExpensesValue.value = appData.addExpenses.join(', ');
   },
   
   addExpensesBlock() {
@@ -92,7 +93,17 @@ let appData = {
       }
     });
   },
-
+  
+  getAddExpenses() {
+    let addExpenses = additionalExpensesItem.value.split(',');
+        addExpenses.forEach((item) => {
+            item = item.trim();
+            if (item !== '') {
+                appData.addExpenses.push(item);
+            }
+        });
+  },
+  
   asking() {
 
     if (confirm('Есть ли у вас дополнительный источник заработка')) {
