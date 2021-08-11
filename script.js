@@ -65,14 +65,14 @@ let appData = {
     appData.getExpensesMonth();
     appData.getAddExpenses();
     appData.getAddIncome();
-    
     appData.getBudget();
+    
     appData.showResult();
   },
   
   showResult() {
     budgetMonthValue.value = appData.budgetMonth;
-    budgetDayValue.value = appData.budgetDay;
+    budgetDayValue.value = Math.floor(appData.budgetDay);
     expensesMonthValue.value = appData.expensesMonth;
     additionalExpensesValue.value = appData.addExpenses.join(', ');
     additionalIncomeValue.value = appData.addIncome.join(', ');
@@ -82,11 +82,22 @@ let appData = {
   
   addExpensesBlock() {
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    cloneExpensesItem.querySelector('.expenses-title').value = '';
+    cloneExpensesItem.querySelector('.expenses-amount').value = '';
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
-    expensesItems = document.querySelectorAll('.expenses-items');
-    if (expensesItems.length === 3) {
-      expensesPlus.style.display = 'none';
-    }
+      if (document.querySelectorAll('.expenses-items').length === 3) {
+          expensesPlus.style.display = 'none';
+        }
+  },
+  
+  addIncomeBlock()  {
+    let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    cloneIncomeItem.querySelector('.income-title').value = '';
+    cloneIncomeItem.querySelector('.income-amount').value = '';
+    incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
+      if (document.querySelectorAll('.income-items').length === 3) {
+          incomePlus.style.display = 'none';
+        }
   },
   
   getExpenses() {
@@ -143,8 +154,8 @@ let appData = {
     if (!appData.budget) {
       appData.budget = 0;
   }
-    appData.budgetMonth = (appData.budget + appData.incomeMonth) - appData.expensesMonth;
-    appData.budgetDay = Math.floor(appData.budgetMonth / 30);
+    appData.budgetMonth = appData.budget + appData.incomeMonth - appData.expensesMonth;
+    appData.budgetDay = appData.budgetMonth / 30;
   },
 
   //результат месячного накопления
@@ -189,12 +200,18 @@ let appData = {
 
   calcPeriod() {
     return appData.budgetMonth * periodSelect.value;
-  }
+  },
+
+  changePeriodSelect(event) {
+    document.querySelector('.period-amount').textContent = event.target.value;
+    incomePeriodValue.value = appData.calcPeriod();
+  },
 };
 
 start.addEventListener('click', appData.start);
-
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
+incomePlus.addEventListener('click', appData.addIncomeBlock);
+periodSelect.addEventListener('input', appData.changePeriodSelect);
 
 
 
