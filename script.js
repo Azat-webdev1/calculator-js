@@ -65,6 +65,7 @@ let appData = {
     appData.getExpensesMonth();
     appData.getBudget();
     appData.getAddExpenses();
+    appData.getAddIncome();
     appData.showResult();
   },
   
@@ -73,6 +74,7 @@ let appData = {
     budgetDayValue.value = appData.budgetDay;
     expensesMonthValue.value = appData.expensesMonth;
     additionalExpensesValue.value = appData.addExpenses.join(', ');
+    additionalIncomeValue.value = appData.addIncome.join(', ');
   },
   
   addExpensesBlock() {
@@ -102,6 +104,15 @@ let appData = {
                 appData.addExpenses.push(item);
             }
         });
+  },
+  
+  getAddIncome() {
+    additionalIncomeItem.forEach((item) => {
+      let itemValue = item.value.trim();
+      if (itemValue !== '') {
+        appData.addIncome.push(itemValue);
+      }
+    })
   },
   
   asking() {
