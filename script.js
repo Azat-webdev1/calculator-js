@@ -75,6 +75,7 @@ let appData = {
     additionalIncomeValue.value = appData.addIncome.join(', ');
     targetMonthValue.value = Math.ceil(appData.getTargetMonth());
     incomePeriodValue.value = appData.calcPeriod();
+    periodSelect.addEventListener('input', appData.changePeriodSelect);
   },
   
   addExpensesBlock() {
@@ -206,13 +207,13 @@ let appData = {
 
   blockStart()  {
     start.disabled = !salaryAmount.value.trim();
-  }
+    }
 };
 
+appData.blockStart();
 start.addEventListener('click', appData.start);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
-periodSelect.addEventListener('input', appData.changePeriodSelect);
 salaryAmount.addEventListener('input', appData.blockStart)
 
 
