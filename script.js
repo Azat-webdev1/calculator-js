@@ -9,13 +9,13 @@ const expensesPlus = btnPlus[1];
 const checkboxDepositCheck = document.querySelector('#deposit-check');
 const additionalIncomeItem = document.querySelectorAll('.additional_income-item');
 
-const budgetMonth = document.getElementsByClassName('budget_month-value');
-const budgetDay = document.getElementsByClassName('budget_day-value');
-const expensesMonth = document.getElementsByClassName('expenses_month-value');
-const additionalIncome = document.getElementsByClassName('additional_income-value');
-const additionalExpenses = document.getElementsByClassName('additional_expenses-value');
-const incomePeriod = document.getElementsByClassName('income_period-value');
-const targetMonth = document.getElementsByClassName('target_month-value');
+const budgetMonthValue = document.getElementsByClassName('budget_month-value');
+const budgetDayValue = document.getElementsByClassName('budget_day-value');
+const expensesMonthValue = document.getElementsByClassName('expenses_month-value');
+const additionalIncomeValue = document.getElementsByClassName('additional_income-value');
+const additionalExpensesValue = document.getElementsByClassName('additional_expenses-value');
+const incomePeriodValue = document.getElementsByClassName('income_period-value');
+const targetMonthValue = document.getElementsByClassName('target_month-value');
 
 const salaryAmount = document.querySelector('.salary-amount');
 const incomeTitle = document.querySelector('.income-title');
@@ -59,15 +59,21 @@ let appData = {
       return;
     }
     appData.budget = salaryAmount.value;
-  /*
-    appData.asking();
+  
+    appData.getExpenses();
+    
     appData.getExpensesMonth();
     appData.getBudget();
-    appData.getTargetMonth();
-    appData.getInfoDeposit();
-  */
+    
+    appData.showResult();
   },
-
+  
+  showResult() {
+    budgetMonthValue.value = appData.budgetMonth;
+    budgetDayValue.value = appData.budgetDay;
+    expensesMonthValue.value = appData.expensesMonth;
+  },
+  
   addExpensesBlock() {
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
@@ -75,6 +81,16 @@ let appData = {
     if (expensesItems.length === 3) {
       expensesPlus.style.display = 'none';
     }
+  },
+  
+  getExpenses() {
+    expensesItems.forEach((item) => {
+      let itemExpenses = item.querySelector('.expenses-title').value;
+      let cashExpenses = item.querySelector('.expenses-amount').value;
+      if (itemExpenses !== '' && cashExpenses !== '') {
+        appData.expenses[itemExpenses] = cashExpense;
+      }
+    });
   },
 
   asking() {
@@ -105,20 +121,6 @@ let appData = {
     .join(', ');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     
-    for (let i = 0; i < 1; i++) {
-      let str = '';
-      do {
-        str = prompt('Введите обязательную статью расходов?');
-      } while (!isString(str));
-      
-      appData.expenses[str] = (() => {
-        let num = 0;
-        do {
-          num = prompt('Во сколько это обойдется?');
-        } while (!isNumber(num));
-        return +num;
-      })();
-    }
   },
 
   //возвращает сумму обязательных расходов
