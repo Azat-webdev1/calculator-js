@@ -55,16 +55,16 @@ let appData = {
   
   start() {
     
-    appData.budget = +salaryAmount.value;
+    this.budget = +salaryAmount.value;
   
-    appData.getExpenses();
-    appData.getIncome();
-    appData.getExpensesMonth();
-    appData.getAddExpenses();
-    appData.getAddIncome();
-    appData.getBudget();
+    this.getExpenses();
+    this.getIncome();
+    this.getExpensesMonth();
+    this.getAddExpenses();
+    this.getAddIncome();
+    this.getBudget();
     
-    appData.showResult();
+    this.showResult();
   },
   
   showResult() {
