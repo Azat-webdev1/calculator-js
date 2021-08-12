@@ -27,7 +27,9 @@ const depositAmount = document.querySelector('.deposit-amount');
 const depositPercent = document.querySelector('.deposit-percent');
 const targetAmount = document.querySelector('.target-amount');
 const periodSelect = document.querySelector('.period-select');
-
+const dataInputTypeText = document.querySelectorAll('.data input[type=text]');
+const inputTypeText = document.querySelectorAll('input[type=text]');
+const periodAmount = document.querySelector('.period-amount');
 
 let isNumber = (n) => {
   return !isNaN(parseFloat(n) && isFinite(n));
@@ -65,6 +67,41 @@ let appData = {
     this.getBudget();
 
     this.showResult();
+
+    if (start.textContent === 'Рассчитать') {
+      this.blockInputs();
+      start.textContent = 'Сбросить';
+    } else {
+      start.textContent = 'Рассчитать';
+      this.reset();
+    }
+  },
+
+  blockInputs(disabled = true) {
+    dataInputTypeText.forEach(item => {
+      item.disabled = disabled;
+    });
+  },
+
+  reset() {
+
+    incomeItems.forEach((item) => {
+      item.parentNode.removeChild(item[i]);
+    });
+
+    expensesItems.forEach((item) => {
+      item.parentNode.removeChild(item[i]);
+    });
+    
+    incomePlus.style.display = '';
+    expensesPlus.style.display = '';
+    this.blockInputs(false);
+    inputTypeText.forEach(item => {
+      item.value = '';
+    });
+    this.getBudget();
+    periodSelect.value = periodAmount.textContent = 1;
+    this.blockStart();
   },
 
   showResult() {
@@ -202,8 +239,8 @@ let appData = {
   },
 
   changePeriodSelect(event) {
-    document.querySelector('.period-amount').textContent = event.target.value;
-    incomePeriodValue.value = this.calcPeriod();
+    periodAmount.textContent = event.target.value;
+    incomePeriodValue.value = appData.calcPeriod();
   },
 
   blockStart() {
