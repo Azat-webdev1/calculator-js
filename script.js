@@ -27,11 +27,11 @@ const periodAmount = document.querySelector('.period-amount');
 let incomeItems = document.querySelectorAll('.income-items');
 let expensesItems = document.querySelectorAll('.expenses-items');
 
-let isNumber = (n) => {
+const isNumber = (n) => {
   return !isNaN(parseFloat(n) && isFinite(n));
 };
 
-let isString = (str, comma = false) => {
+const isString = (str, comma = false) => {
   const pattern = comma ? /^[, а-яА-ЯёЁa-zA-Z]+$/ : /^[ а-яА-ЯёЁa-zA-Z]+$/;
   return pattern.test(str);
 };
@@ -58,7 +58,7 @@ class AppData {
       start.setAttribute('disabled', 'true');
       return;
     }
-    let dataInputTypeText = document.querySelectorAll('.data input[type = text]');
+    const dataInputTypeText = document.querySelectorAll('.data input[type = text]');
     dataInputTypeText.forEach((item) => {
       item.setAttribute('disabled', 'true');
     });
@@ -98,7 +98,7 @@ class AppData {
   };
 
   addExpensesBlock() {
-    let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    const cloneExpensesItem = expensesItems[0].cloneNode(true);
     cloneExpensesItem.querySelector('.expenses-title').value = '';
     cloneExpensesItem.querySelector('.expenses-amount').value = '';
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
@@ -109,7 +109,7 @@ class AppData {
   };
 
   addIncomeBlock() {
-    let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    const cloneIncomeItem = incomeItems[0].cloneNode(true);
     cloneIncomeItem.querySelector('.income-title').value = '';
     cloneIncomeItem.querySelector('.income-amount').value = '';
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
