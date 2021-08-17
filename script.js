@@ -240,9 +240,11 @@ class AppData {
   changePercent() {
     const valueSelect = this.value;
     if (valueSelect === 'other') {
-      //дз
+      depositPercent.style.display = 'inline-block';
+      depositPercent.value = '';
     } else {
       depositPercent.value = valueSelect;
+      depositPercent.style.display = 'none';
     }
   }
 
@@ -255,6 +257,7 @@ class AppData {
     } else {
       depositBank.style.display = 'none';
       depositAmount.style.display = 'none';
+      depositPercent.style.display = 'none';
       depositBank.value = '';
       depositAmount.value = '';
       this.deposit = false;
