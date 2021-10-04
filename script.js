@@ -1,6 +1,5 @@
 'use strict';
 
-// урок №16 
 const start = document.getElementById('start');
 const cancel = document.getElementById('cancel');
 const btnPlus = document.getElementsByTagName('button');
@@ -63,8 +62,6 @@ class AppData {
       this.getAddExpInc();
       this.getInfoDeposit();
       this.getBudget();
-      //this.getTargetMonth();
-      //this.getStatusIncome();
       this.showResult();
       this.blockage();
       start.textContent = 'Сбросить';
@@ -322,3 +319,4 @@ class AppData {
 const appData = new AppData();
 
 appData.eventsListeners();
+
